@@ -1,14 +1,16 @@
+//Initializes visuals variables
 float angle;
 float jitter;
 float time;
 ArrayList<Square> squares;
+//camera movement
 float xEye = width/2;
 float yEye = height/2;
 float dX = 5;
 float dY = 5;
-boolean cameraShit = false;
+boolean cameraShit = false;    //If true, the camera if moving
 
-//___________music dongs____________
+//___________music stuff____________
 import processing.sound.*;
 SoundFile file;
 FFT fft;
@@ -18,8 +20,8 @@ float devsAboveMean;
 
 
 void setup() {
-  //fullScreen();
-  size(1440, 900, P3D);
+  //fullScreen();               //fullScreen() doesn't allow the camera to move
+  size(1440, 900, P3D); 
   noStroke();
   rectMode(CENTER);
    
@@ -40,8 +42,8 @@ void setup() {
   squares = new ArrayList<Square>();
   createSquareList();
   
+  //This sets the camera location as the default, but also allows it to be manipulated inside the draw method
   camera(width/2, height/2, (height/2.0) / tan(PI*30.0 / 180.0) + 200, width/2.0, height/2.0, 0, 0, 1, 0);
-
   
 }
 
@@ -71,6 +73,7 @@ void draw() {
     
 }
 
+//Uses recursion to generate list of squares
 void createSquareList()
 {
   float x = width/2;
@@ -78,9 +81,6 @@ void createSquareList()
   float s = 180;
   squares.add(new Square(x, y, s));
   createSubList(x, y, s, 2);
- 
-  
-  
 }
 
 void createSubList(float x1, float y1, float s1, int layer)

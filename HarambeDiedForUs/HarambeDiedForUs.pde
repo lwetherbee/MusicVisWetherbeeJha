@@ -1,3 +1,5 @@
+//Variable init
+//Also sorry to anyone except for Luke Wetherbee reading this, the variable names are not helpful
 float time = 0; 
 float theta = 0;
 PImage hrmbe1;

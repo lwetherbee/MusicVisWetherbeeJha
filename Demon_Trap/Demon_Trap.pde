@@ -1,3 +1,4 @@
+//Initializing background gifs
 Animation demon2;
 Animation nuke;
 Animation nuke2;
@@ -8,10 +9,7 @@ float[][] lineCoords;
 float time = 0;
 ArrayList<Animation> animationList;
 
-//Movie
-
-
-//Music stuff
+//Initialization of Music Management
 import processing.sound.*;
 SoundFile file;
 FFT fft;
@@ -19,9 +17,10 @@ int bands = 1024;
 BucketAnalyzer ba;
 float devsAboveMean;
 
+
 void setup()
 {
-  size(1440,900);
+  fullScreen();
   
   //___________ANIMATIONS_____________
   //Demon gif
@@ -43,7 +42,6 @@ void setup()
   //cruzzodiac = new Animation("cruzzodiac", 23, 0.1);
   //cruzzodiac.resize(width, height);
   
-  
   animationList = new ArrayList<Animation>();
   animationList.add(demon2);
   animationList.add(nuke);
@@ -54,18 +52,17 @@ void setup()
   
   lineCoords = new float[64][3];
   initializeLines();
+ 
   
+  //____________Music__________
   file = new SoundFile(this, "/Users/lukewetherbee1/Music/iTunes/iTunes Media/Music/Elysian Records/Unknown Album/Achilles.mp3");
   delay(10);
   file.play();
   delay(10);
-
   fft = new FFT(this, bands);
   fft.input(file);
-  
   ArrayList<Integer> buckets = new ArrayList<Integer>();
   buckets.add(0);
-  
   // Vals for A Milli -> 0.2316, 0.0544
   // vals for pressure -> 0.152, 0.0404
   // vals for all we do -> 0.042580184, 0.011173662
@@ -75,7 +72,7 @@ void setup()
 
 void draw()
 {
-  time += 0.009;
+  time += 0.009;              //Controls how fast some animations run
   devsAboveMean = ba.getDevsAboveMean();
   
   //Demon Image
@@ -85,7 +82,7 @@ void draw()
     tint(30, 100);
     
   //Animation control
-  
+ 
   animationList.get((int)time % animationList.size()).display();
   //image(demon1,0,0);
   
@@ -104,11 +101,10 @@ void draw()
     if (devsAboveMean > .15)
       lineCoords[i][2] -= 0.05;
   }
-  
-  //red lightning
-  
+    
 }
 
+//Creates the list of Lines
 void initializeLines()
 {
   for (int i = 0; i < lineCoords.length; i++)
