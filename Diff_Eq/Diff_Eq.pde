@@ -1,3 +1,13 @@
+/*
+Written by Luke Wetherbee and Rohan Dev Jha
+
+To run, you need to install the Sound Library made by Processing Inc.
+You will also need to change the location of the song to a song you
+have downloaded. You also might need to increase the maximum available 
+memory on some sketches.
+
+*/ 
+
 import processing.sound.*;
 
 ArrayList<Particle> particles;

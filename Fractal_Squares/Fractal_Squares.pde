@@ -1,3 +1,14 @@
+/*
+Written by Luke Wetherbee and Rohan Dev Jha
+
+To run, you need to install the Sound Library made by Processing Inc.
+You will also need to change the location of the song to a song you
+have downloaded. You also might need to increase the maximum available 
+memory on some sketches.
+
+*/ 
+
+
 //Initializes visuals variables
 float angle;
 float jitter;
@@ -8,7 +19,7 @@ float xEye = width/2;
 float yEye = height/2;
 float dX = 5;
 float dY = 5;
-boolean cameraShit = false;    //If true, the camera if moving
+boolean cameraMove = false;    //If true, the camera if moving
 
 //___________music stuff____________
 import processing.sound.*;
@@ -53,9 +64,9 @@ void draw() {
   
   devsAboveMean = ba.getDevsAboveMean();
   
-  if (devsAboveMean > 45 || cameraShit)
+  if (devsAboveMean > 45 || cameraMove)
   {
-    cameraShit = true;
+    cameraMove = true;
     //Camera stuff
     if (xEye < 5 || xEye > width - 5)
       dX *= -1;

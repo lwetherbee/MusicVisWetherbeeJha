@@ -1,5 +1,17 @@
+/*
+Written by Luke Wetherbee and Rohan Dev Jha
+
+To run, you need to install the Sound Library made by Processing Inc.
+You will also need to change the location of the song to a song you
+have downloaded. You also might need to increase the maximum available 
+memory on some sketches.
+
+*/ 
+
+
+
 //Variable init
-//Also sorry to anyone except for Luke Wetherbee reading this, the variable names are not helpful
+//Also sorry to anyone except for Luke Wetherbee reading this, the variable names are not terrible 
 float time = 0; 
 float theta = 0;
 PImage hrmbe1;
@@ -34,6 +46,7 @@ void setup() {
   frameRate(60);
   rectMode(CENTER);
   
+  //Change to own song
   file = new SoundFile(this, "/Users/lukewetherbee1/Music/iTunes/iTunes Media/Music/Unknown Artist/Unknown Album/Young Thug - Harambe [Official Audio].mp3");
   delay(10);
   file.play();
@@ -51,13 +64,8 @@ void setup() {
     bas.add(new BucketAnalyzer(fft, buckets, bands));
   }
   
-  //Vals for all we do - Kaytra
+  //Preloading the mean and variance.
   bas.get(0).set(1.2560458, 0.5565917);
-  /*bas.get(1).set(0.25963914, 0.06601972);
-  bas.get(2).set(0.12765302, 0.021797344);
-  bas.get(3).set(0.09016249, 0.015026064);
-  bas.get(4).set(0.08142285, 0.016922515);
-  bas.get(5).set(0.07523557, 0.02082847);*/
   
   hrmbe1 = loadImage("DOFH.jpg");
   hrmbe2 = loadImage("Harambe.jpg");
@@ -66,7 +74,6 @@ void setup() {
   emoji3 = loadImage("emoji3.jpg");
   emoji4 = loadImage("emoji4.jpg");
   
-
 }
 
 
@@ -74,6 +81,8 @@ void draw() {
   background(bg);
   rectMode(CENTER);
   time += 1;
+  
+  //Each call in a different section of hertz values, but we only use the bass one.
   devsAboveMean0 = bas.get(0).getDevsAboveMean();
   //devsAboveMean1 = bas.get(1).getDevsAboveMean();
   //devsAboveMean2 = bas.get(2).getDevsAboveMean();
@@ -81,6 +90,8 @@ void draw() {
   //devsAboveMean4 = bas.get(4).getDevsAboveMean();
   //devsAboveMean5 = bas.get(5).getDevsAboveMean();
   
+  
+  //Oh god this looks disgusting 
   if (devsAboveMean0 > 4)
   {
     harambeIMissYouSoMuchPlsSmileUponMeOneMoreTime = 15;
@@ -89,7 +100,6 @@ void draw() {
   {
     harambeIMissYouSoMuchPlsSmileUponMeOneMoreTime = 25;
   }
-    
   if (time % harambeIMissYouSoMuchPlsSmileUponMeOneMoreTime == 0)
   { 
     particles.add(new Particle(random(20) + width/2, random(20) + height/2, random(-5, 5), random(-5, 5), hrmbe1));

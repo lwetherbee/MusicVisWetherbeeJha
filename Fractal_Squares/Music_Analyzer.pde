@@ -1,7 +1,15 @@
+/*
+This is the class that analyzes the music and gives a value to the draw() method. The value given is the 
+standard deviations above the mean. The analysis works by taking a rolling mean and variance, so as the 
+song plays, the analysis gets more and more accurate. It also gives you the option of entering the mean 
+variance manually. This makes it accurate from the start.
+*/
+
+
 class BucketAnalyzer
 {
   FFT fft;
-  int bands = 128;
+  int bands = 128;        //Bands must be a power of 2
   float[] spectrum = new float[bands];
   
   ArrayList<Integer> buckets;
@@ -74,6 +82,7 @@ class BucketAnalyzer
       devsAboveMean = (float)(50 * Math.max(0, ((dampenedBucketValue - mean)) / Math.sqrt(variance)));
     }
     
+    //Uncomment these to get mean and variance to preload.
     //println(mean);
     //println(variance);
     return devsAboveMean;

@@ -1,3 +1,11 @@
+/*
+This is the class that analyzes the music and gives a value to the draw() method. The value given is the 
+standard deviations above the mean. The analysis works by taking a rolling mean and variance, so as the 
+song plays, the analysis gets more and more accurate. It also gives you the option of entering the mean 
+variance manually. This makes it accurate from the start.
+*/
+
+
 class BucketAnalyzer
 {
   FFT fft;

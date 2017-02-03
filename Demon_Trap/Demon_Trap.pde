@@ -1,10 +1,28 @@
+/*
+Written by Luke Wetherbee and Rohan Dev Jha
+
+To run, you need to install the Sound Library made by Processing Inc.
+You will also need to change the location of the song to a song you
+have downloaded. You also might need to increase the maximum available 
+memory on some sketches. With any gifs or images, make sure you have 
+the corrosponding items in the correct folder.
+
+This sketch is pretty rough on the computer, and requires you to 
+allocate more memory for Processing to use. We recommend 2048. 
+The whole idea of this sketch was the use of association we got from Baauer.
+(Other artists such as Flying Lotus use similar ideas) For loud trap concerts, 
+we wanted to have a sketch that would interact with people in a visceral way; 
+as in activate a fight or flight response by using high intensity images. 
+This is just a proof of concept, but we think it could
+be expanded on to great effect.
+
+*/ 
+
 //Initializing background gifs
 Animation demon2;
 Animation nuke;
 Animation nuke2;
 Animation crashes;
-//Animation fiorina;
-//Animation cruzzodiac;
 float[][] lineCoords;
 float time = 0;
 ArrayList<Animation> animationList;
@@ -35,26 +53,19 @@ void setup()
   //car crashes
   crashes = new Animation("crashes", 39, 0.08);
   crashes.resize(width, height);
-  //Fiorina falling off stage
-  //fiorina = new Animation("fiorina", 46, 0.1);
-  //fiorina.resize(width, height);  
-  //ted cruz, the zodiac killa
-  //cruzzodiac = new Animation("cruzzodiac", 23, 0.1);
-  //cruzzodiac.resize(width, height);
   
   animationList = new ArrayList<Animation>();
   animationList.add(demon2);
   animationList.add(nuke);
   animationList.add(nuke2);
   animationList.add(crashes);
-  //animationList.add(fiorina);
-  //animationList.add(cruzzodiac);
   
   lineCoords = new float[64][3];
   initializeLines();
  
   
   //____________Music__________
+  //Loud trap music recommended
   file = new SoundFile(this, "/Users/lukewetherbee1/Music/iTunes/iTunes Media/Music/Elysian Records/Unknown Album/Achilles.mp3");
   delay(10);
   file.play();
@@ -113,12 +124,4 @@ void initializeLines()
     lineCoords[i][1] = width/1.5;
     lineCoords[i][2] = i * (float)Math.PI/32;
   }
-}
-
-void mousePressed() {
-  noLoop();
-}
-
-void keyPressed() {
-  loop();
 }

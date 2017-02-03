@@ -1,5 +1,6 @@
 // Class for animating a GIF
-// Works by creating a list of frames 
+// Works by creating a list of frames and is a pain
+//
 
 class Animation {
   PImage[] images;
